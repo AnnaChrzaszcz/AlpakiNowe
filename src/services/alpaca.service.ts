@@ -7,35 +7,39 @@ import {OwnerService} from './owner.service';
   providedIn: 'root'
 })
 export class AlpacaService {
-
-  private alpacsList: Array<Alpaca> = [];
-  private alpacsListObs = new BehaviorSubject<Array<Alpaca>>(this.alpacsList);
+  private alpacsListObs = new BehaviorSubject<Array<Alpaca>>([]);
 
   constructor(ownerService: OwnerService) {
     console.log('alpaca service');
-    // tslint:disable-next-line:max-line-length
-    this.alpacsList.push({id: 1, age: 10, gender: 0, name: 'Kubson', src: 'assets/images/alp1.jpg', owner: ownerService.getOwner(2)});
-    this.alpacsList.push({id: 2, age: 5, gender: 1, name: 'Raf', src: 'assets/images/alp2.png', owner: ownerService.getOwner(1)});
-    this.alpacsList.push({id: 3, age: 3, gender: 0, name: 'Marian', src: 'assets/images/alp3.jpg'});
-    this.alpacsList.push({id: 4, age: 6, gender: 1, name: 'Ann', src: 'assets/images/alp4.jpg'});
-
-    this.alpacsListObs.next(this.alpacsList);
+    const alpacsList = [
+      {id: 1, age: 10, gender: 0, name: 'Kubson', src: 'assets/images/alp1.jpg', owner: ownerService.getOwnerById(2)},
+      {id: 2, age: 5, gender: 1, name: 'Raf', src: 'assets/images/alp2.png', owner: ownerService.getOwnerById(1)},
+      {id: 3, age: 3, gender: 0, name: 'Marian', src: 'assets/images/alp3.jpg'},
+      {id: 4, age: 6, gender: 1, name: 'Ann', src: 'assets/images/alp4.jpg'}
+    ];
+    this.alpacsListObs.next(alpacsList);
   }
 
   add(alpaca: Alpaca) {
     console.log('dodalismy alpake o ID: ' + alpaca.id);
-    this.alpacsList.push(alpaca);
-    this.alpacsListObs.next(this.alpacsList);
+    const list = this.alpacsListObs.getValue();
+    list.push(alpaca);
+    this.alpacsListObs.next(list);
   }
 
   delete(alpaca: Alpaca) {
     console.log('usunelismy alpake o ID: ' + alpaca.id);
-    this.alpacsList = this.alpacsList.filter(e => e !== alpaca);
-    this.alpacsListObs.next(this.alpacsList);
+    const list = this.alpacsListObs.getValue();
+    list.filter(e => e !== alpaca);
+    this.alpacsListObs.next(list);
   }
 
   getalpacasObs(): Observable<Array<Alpaca>> {
     return this.alpacsListObs.asObservable();
+ }
+
+ getAlpacaById(id: number): Alpaca {
+    return this.alpacsListObs.getValue().find(e => e.id === id);
  }
 
 

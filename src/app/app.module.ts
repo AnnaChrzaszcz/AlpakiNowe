@@ -12,6 +12,7 @@ import { AddAlpacaComponent } from './add-alpaca/add-alpaca.component';
 import {AlpacaService} from '../services/alpaca.service';
 import {OwnerService} from '../services/owner.service';
 import {SpeciesService} from '../services/species.service';
+import { DetailsAlpacaComponent } from './details-alpaca/details-alpaca.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {SpeciesService} from '../services/species.service';
     GalleryComponent,
     AboutComponent,
     ContactComponent,
-    AddAlpacaComponent
+    AddAlpacaComponent,
+    DetailsAlpacaComponent
   ],
   imports: [
     BrowserModule,

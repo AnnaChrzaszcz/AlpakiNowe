@@ -32,7 +32,7 @@ export class OwnerService {
     return this.ownersListObs.asObservable();
   }
 
-  getOwner(id: number): Owner {
+  getOwnerById(id: number): Owner {
     return this.ownersList.find(e => e.id === id);
   }
 }
