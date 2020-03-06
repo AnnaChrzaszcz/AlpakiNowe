@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+h1{
+  font-family: 'Yeseva One', cursive;
+  font-weight: bold;
+  margin: 1% 8% 0% 4%;
+}
+
+aside{
+  float: left;
+  width: 10%;
+}
+
+p{
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.alpaki{
+  width: 100%;
+  height: 250px;
+}
+
+.logo{
+  width: 100%;
+  height: 100%;
+
+}
+
+section{
+  margin: 1% 5% 3% 10%;
+  width: 85%;
+  align-content: center;
+}
+
