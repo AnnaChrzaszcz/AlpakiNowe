@@ -1,20 +1,55 @@
-<div class="container">
-  <h3> Dodaj twoja zajebista Alpke!</h3>
-  <form><!--[formGroup]="alpacaForm" (ngSubmit)="onSubmit(alpacaForm)"-->
-    <div class="form-group">
-      <label for="name">Enter name</label>
-      <input id="name" class="form-control" name="name" required="true" type="text" minlength="3" maxlength="50"   >
-      <div class="alert alert-danger"> <!--*ngIf="!name.valid && name.touched"--></div>
+<form class="alpacaForm">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input required minlength="3" maxlength="15" pattern="[a-zA-Z]+" ngModel name="name" #name="ngModel" id="name" type="text" class="form-control">
+    <div class="alert alert-danger" *ngIf="name.touched && !name.valid">
+    <div *ngIf="name.errors.required">Name is required.</div>
+    <div *ngIf="name.errors.minlength">Name should be minimum 3 characters.</div>
+    <div *ngIf="name.errors.maxlength">Name should be max 15 characters.</div>
+    <div *ngIf="name.errors.pattern">Name doesn't match the pattern.</div>
+    </div>
+    </div>
+  <div class="form-group">
+    <label for="age">Age</label>
+    <input required minlength="1" maxlength="3" pattern="[0-9]+" ngModel name="age" #age="ngModel" id="age" type="text" class="form-control">
+    <div class="alert alert-danger" *ngIf="age.touched && !age.valid">
+      <div *ngIf="age.errors.required">Age is required.</div>
+      <div *ngIf="age.errors.minlength">Age should be min one number.</div>
+      <div *ngIf="age.errors.maxlength">Age should be max three number. </div>
+      <div *ngIf="age.errors.pattern">Age should be only number. </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="species">Species</label>
+    <input minlength="5" maxlength="30" pattern="[a-zA-Z]+" ngModel name="species" #species="ngModel" id="species" type="text" class="form-control">
+    <div class="alert alert-danger" *ngIf="!species.valid">
+      <div class="alert alert-success" *ngIf="species .touched">The field is not required</div>
+      <div *ngIf="species.errors.minlength">Species should be minimum 5 characters.</div>
+      <div *ngIf="species.errors.maxlength">Species mame should be max 30 characters.</div>
+      <div *ngIf="species.errors.pattern">Species doesn't match the pattern.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="owner">Owner</label>
+    <input minlength="5" maxlength="30" pattern="[a-zA-Z]+" ngModel name="owner" #owner="ngModel" id="owner" type="text" class="form-control">
+    <div class="alert alert-danger" *ngIf="!owner.valid">
+      <div class="alert alert-success" *ngIf="owner.touched">The field is not required</div>
+      <div *ngIf="owner.errors.minlength">Owner name should be minimum 5 characters.</div>
+      <div *ngIf="owner.errors.maxlength">Owner mame should be max 30 characters.</div>
+      <div *ngIf="owner.errors.pattern">Name doesn't match the pattern.</div>
+    </div>
+  </div>
+  <label>Gender</label>
+  <div class="form-group">
+    <div class="custom-control custom-radio custom-control-inline">
+      <input required ngModel name="gender" #gender="ngModel" id="gender" type="radio" class="custom-control-input" id="defaultInline1" name="inlineDefaultRadiosExample" mdbInput>
+      <label class="custom-control-label" for="defaultInline1">Male</label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+      <input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample" mdbInput>
+      <label class="custom-control-label" for="defaultInline2">Female</label>
+    </div>
+  </div>
 
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-</div>
+  <button class="btn btn-primary" (click)="add">Dodaj Alpaczkę.</button>
+</form>

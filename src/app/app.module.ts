@@ -13,6 +13,7 @@ import {AlpacaService} from '../services/alpaca.service';
 import {OwnerService} from '../services/owner.service';
 import {SpeciesService} from '../services/species.service';
 import { DetailsAlpacaComponent } from './details-alpaca/details-alpaca.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,10 +26,11 @@ import { DetailsAlpacaComponent } from './details-alpaca/details-alpaca.componen
     AddAlpacaComponent,
     DetailsAlpacaComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule
+    ],
   providers: [AlpacaService, OwnerService, SpeciesService],
   bootstrap: [AppComponent]
 })

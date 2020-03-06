@@ -18,8 +18,8 @@ console.log('jestem w constructor w detail alpaca component.ts');
 
   ngOnInit() {
     this.route.paramMap.subscribe((param: Params) => {
-      this.alpaca = this.alpacaService.getAlpacaById(param.get('id'));
-      console.log('jestem w ngOnInit w detail alpaca component.ts' + this.alpaca.name);
+      this.alpaca = this.alpacaService.getAlpacaById(+param.get('id'));
+      console.log('jestem w ngOnInit w detail alpaca component.ts');
     });
   }
 
