@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-//koniec pica tej kawusi kurwa mac
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
